@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>Estatisticas Relevantes</h1>
+	<p>Total de pessoas cadastradas: {{list_size}}</p>
+	<p>Tamanho dos nomes completos (ignorando espaçamento): </p>
+<ul>
+<li>Mínimo: {{minimum_full_name}} </li>
+<li>Máximo: {{maximum_full_name}}</li>
+<li>Média de Tamanho dos Nomes Completos: </li>
+
+</ul>
+
+
+{% endblock content %}

@@ -3,6 +3,7 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from agenda.models import Contact
 from agenda.forms import ContactForm
+from agenda.methods import Methods
 from django.db.models import Q
 
 # Create your views here.
@@ -11,6 +12,14 @@ from django.db.models import Q
 
 def home(request):
     return render(request,'index.html')
+
+def statistics(request):
+    contacts = Contact.objects.all()
+    methods = Methods()
+    lowest_size = methods.calculate_lower_full_name_size(contacts)
+    highest_size = methods.calculate_highest_full_name_size(contacts)
+
+    return render(request,'statistics.html', {'list_size': len(contacts), 'minimum_full_name': lowest_size, 'maximum_full_name': highest_size})
 
 class Create(CreateView):
     template_name = 'signin.html'
@@ -40,7 +49,6 @@ class SearchList(ListView):
     template_name = 'results.html'
     model = Contact
     def get_queryset(self):
-        #print self.model.objects.all()
         result = super(SearchList, self).get_queryset()
         query = self.request.GET.get('query')
         if (query != ''):
@@ -50,4 +58,7 @@ class SearchList(ListView):
             object_list = self.model.objects.all()
         return object_list
 
+
+
+   
 

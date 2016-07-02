@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <h1>Lista de Clientes</h1>
+
+                <table>
+                        <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                        </tr>
+                {% for contact in object_list %}
+                        <tr>
+                                <td>{{ contact.name }}</td>
+                                <td>{{ contact.email }}</td>
+                        </tr>
+                {% empty %}
+                        <li>Sem itens na lista.</li>
+                {% endfor %}
+                </table>
+{% endblock content %}

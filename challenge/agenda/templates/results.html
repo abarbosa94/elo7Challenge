@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <h1>Resultados da Busca</h1>
+
+                <table>
+                        <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                        </tr>
+                {% for contact in object_list %}
+                        <tr>
+                                <td>{{ contact.name }}</td>
+                                <td>{{ contact.email }}</td>
+                                <td><form action="{% url 'update' contact.id %}">
+                                        <input type="submit" value="Editar">
+                                        </form><td>
+                                <td><form action="{% url 'delete' contact.id %}">
+                                        <input type="submit" value="Deletar">
+                                        </form></td>
+                        </tr>
+                {% empty %}
+                        <li>Sua busca não retornou nada ):</li>
+                {% endfor %}
+                </table>
+{% endblock content %}

@@ -13,6 +13,7 @@ urlpatterns = patterns('agenda.views',
 	url(r'^signin/$', Create.as_view(), name='signin'),
 	url(r'^update/(?P<pk>[0-9]+)/$', Update.as_view(), name='update'),
 	url(r'^list/$', List.as_view(), name='list'),
+	url(r'^results/$', SearchList.as_view(), name='search'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^delete/(?P<pk>[0-9]+)/$', Delete.as_view(), name='delete'),
 )

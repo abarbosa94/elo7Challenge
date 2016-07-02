@@ -11,6 +11,10 @@
                         <li><a href="{% url 'home' %}">Início</a></li>
                         <li><a href="{% url 'signin' %}">Cadastro</a></li>
                         <li><a href="{% url 'list' %}">Lista</a></li>
+                        <br>
+                        <form method = 'GET' action = "{% url 'search' %}">
+                                <input type = 'text' name = 'query' placeholder = 'Buscar amigos'/>
+                                <input type = 'submit' value = 'Buscar' />
                 </ul>
         </div>
 

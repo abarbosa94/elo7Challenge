@@ -1,9 +1,10 @@
-{% extends 'base.html' %}
-
 {% block content %}
         <form action="" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit">Atualizar</button>
         </form>
+        <form action="{% url 'list'%}">
+          	<input type="submit" value="Ir para a Lista de Amigos">
+       	</form>
 {% endblock content %}

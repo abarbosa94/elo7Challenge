@@ -1,0 +1,4 @@
+<form action="" method="post">{% csrf_token %}
+    <p>Você tem certeza que você quer deletar o usuário "{{ object }}", cujo email é "{{object.email}}"?</p>
+    <input type="submit" value="Confirmar" />
+</form>

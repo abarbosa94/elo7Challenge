@@ -15,11 +15,24 @@ def home(request):
 
 def statistics(request):
     contacts = Contact.objects.all()
+    emails = contacts.values_list('email', flat=True)
+    names = contacts.values_list('name', flat=True)
     methods = Methods()
-    lowest_size = methods.calculate_lower_full_name_size(contacts)
-    highest_size = methods.calculate_highest_full_name_size(contacts)
+    lowest_full_name = methods.calculate_lower_size(names)
+    highest_full_name = methods.calculate_highest_size(names)
+    avg_full_name = methods.calculate_size_avg(names)
+    names = methods.pick_first_names(names)
+    lowest_first_name = methods.calculate_lower_size(names)
+    highest_first_name = methods.calculate_highest_size(names)
+    avg_first_name = methods.calculate_size_avg(names)
+    lowest_email = methods.calculate_lower_size(emails)
+    highest_email = methods.calculate_highest_size(emails)
+    avg_email = methods.calculate_size_avg(emails)
 
-    return render(request,'statistics.html', {'list_size': len(contacts), 'minimum_full_name': lowest_size, 'maximum_full_name': highest_size})
+    return render(request,'statistics.html', {'list_size': len(contacts),
+        'minimum_full_name': lowest_full_name, 'maximum_full_name': highest_full_name, 'avg_full_name': avg_full_name,
+        'minimum_first_name': lowest_first_name, 'maximum_first_name': highest_first_name, 'avg_first_name': avg_first_name,
+        'minimum_email': lowest_email, 'maximum_email': highest_email, 'avg_email': avg_email})
 
 class Create(CreateView):
     template_name = 'signin.html'

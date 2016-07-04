@@ -3,8 +3,9 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from agenda.models import Contact
 from agenda.forms import ContactForm
-from agenda.methods import Methods
+from agenda.functions.methods import Methods
 from django.db.models import Q
+from agenda.functions.twitter import Test
 
 # Create your views here.
 
@@ -57,6 +58,15 @@ class List(ListView):
     template_name = 'list.html'
     model = Contact
     context_object = 'name'
+    contacts = Contact.objects.all()
+    emails = contacts.values_list('email', flat=True)
+    def get_context_data(self, **kwargs):
+        context = super(List, self).get_context_data(**kwargs)
+        test = Test()
+        tweet = test.get_last_tweet('bbcbrasil')
+        context['tweet'] = tweet
+        print 'hi'
+        return context
 
 class SearchList(ListView):
     template_name = 'results.html'

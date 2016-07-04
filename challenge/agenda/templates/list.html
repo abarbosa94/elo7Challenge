@@ -12,12 +12,16 @@
                         <tr>
                                 <td>{{ contact.name }}</td>
                                 <td>{{ contact.email }}</td>
+                                <td>    
+                                        {{tweet}}
+                                </td>
                                 <td><form action="{% url 'update' contact.id %}">
                                         <input type="submit" value="Editar">
                                         </form><td>
                                 <td><form action="{% url 'delete' contact.id %}">
                                         <input type="submit" value="Deletar">
                                         </form></td>
+
                         </tr>
                 {% empty %}
                         <li>Sem itens na lista.</li>

@@ -12,15 +12,16 @@
                         <li><a href="{% url 'signin' %}">Cadastro</a></li>
                         <li><a href="{% url 'list' %}">Lista</a></li>
                         <li><a href="{% url 'stat' %}">Estatisticas</a></li>
-                        <br>
-                        <form method = 'GET' action = "{% url 'search' %}">
-                                <input type = 'text' name = 'query' placeholder = 'Buscar amigos'/>
-                                <input type = 'submit' value = 'Buscar' />
                 </ul>
         </div>
 
         {% block content %}
 
         {% endblock content %}
+
+        <br>
+        <form method = 'GET' action = "{% url 'search' %}">
+                <input type = 'text' name = 'query' placeholder = 'Buscar amigos'/>
+                <input type = 'submit' value = 'Buscar' />
 </body>
 </html>

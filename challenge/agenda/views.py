@@ -62,7 +62,7 @@ class List(ListView):
     test = Test()
     contacts = Contact.objects.all()
     users = contacts.values_list('twitter_user', flat=True)
-    contacts = test.get_last_tweet(users, contacts)
+    #contacts = test.get_last_tweet(users, contacts)
         #context['tweet'] = tweet
 
 class SearchList(ListView):

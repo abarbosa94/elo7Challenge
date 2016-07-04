@@ -22,18 +22,25 @@ def statistics(request):
     lowest_full_name = methods.calculate_lower_size(names)
     highest_full_name = methods.calculate_highest_size(names)
     avg_full_name = methods.calculate_size_avg(names)
+    quartiles_full_name = methods.calculate_quartiles(names)
     names = methods.pick_first_names(names)
     lowest_first_name = methods.calculate_lower_size(names)
     highest_first_name = methods.calculate_highest_size(names)
     avg_first_name = methods.calculate_size_avg(names)
+    quartiles_first_name = methods.calculate_quartiles(names)
     lowest_email = methods.calculate_lower_size(emails)
     highest_email = methods.calculate_highest_size(emails)
     avg_email = methods.calculate_size_avg(emails)
+    quartiles_email = methods.calculate_quartiles(emails)
+
 
     return render(request,'statistics.html', {'list_size': len(contacts),
-        'minimum_full_name': lowest_full_name, 'maximum_full_name': highest_full_name, 'avg_full_name': avg_full_name,
-        'minimum_first_name': lowest_first_name, 'maximum_first_name': highest_first_name, 'avg_first_name': avg_first_name,
-        'minimum_email': lowest_email, 'maximum_email': highest_email, 'avg_email': avg_email})
+        'full_name': [lowest_full_name, highest_full_name, avg_full_name],
+        'first_name': [lowest_first_name, highest_first_name, avg_first_name],
+        'email': [lowest_email, highest_email, avg_email],
+        'quartiles_full_name': quartiles_full_name, 
+        'quartiles_first_name': quartiles_first_name, 
+        'quartiles_email': quartiles_email})
 
 class Create(CreateView):
     template_name = 'signin.html'

@@ -5,24 +5,39 @@
 	<p>Total de pessoas cadastradas: {{list_size}}</p>
 	<p>Tamanho dos nomes completos (ignorando espaçamento): </p>
 <ul>
-<li>Mínimo: {{minimum_full_name}} </li>
-<li>Máximo: {{maximum_full_name}}</li>
-<li>Média de Tamanho dos Nomes Completos: {{avg_full_name}}</li>
+<li>Mínimo: {{full_name.0}} </li>
+<li>Máximo: {{full_name.1}}</li>
+<li>Média de Tamanho dos Nomes Completos: {{full_name.2}}</li>
+<ul><p>Quartis:</p>
+	<li>Primeiro Quartil: {{quartiles_full_name.0}}</li>
+	<li>Segundo Quartil: {{quartiles_full_name.1}}</li>
+	<li>Terceiro Quartil: {{quartiles_full_name.2}}</li>
+</ul>
 </ul>
 
 	<p>Tamanho dos nomes, considerando apenas o primeiro nome: </p>
 <ul>
-<li>Mínimo: {{minimum_first_name}} </li>
-<li>Máximo: {{maximum_first_name}}</li>
-<li>Média de Tamanho dos Primeiros Nomes: {{avg_first_name}}</li>
+<li>Mínimo: {{first_name.0}} </li>
+<li>Máximo: {{first_name.1}}</li>
+<li>Média de Tamanho dos Primeiros Nomes: {{first_name.2}}</li>
+<ul><p>Quartis:</p>
+	<li>Primeiro Quartil: {{quartiles_first_name.0}}</li>
+	<li>Segundo Quartil: {{quartiles_first_name.1}}</li>
+	<li>Terceiro Quartil: {{quartiles_first_name.2}}</li>
+</ul>
 </ul>
 
 
 	<p>Tamanho dos emails: </p>
 <ul>
-<li>Mínimo: {{minimum_email}} </li>
-<li>Máximo: {{maximum_email}}</li>
-<li>Média de Tamanho dos Emails: {{avg_email}}</li>
+<li>Mínimo: {{email.0}} </li>
+<li>Máximo: {{email.1}}</li>
+<li>Média de Tamanho dos Emails: {{email.2}}</li>
+<ul><p>Quartis:</p>
+	<li>Primeiro Quartil: {{quartiles_email.0}}</li>
+	<li>Segundo Quartil: {{quartiles_email.1}}</li>
+	<li>Terceiro Quartil: {{quartiles_email.2}}</li>
+</ul>
 </ul>
 
 

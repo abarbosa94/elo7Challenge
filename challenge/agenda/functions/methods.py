@@ -1,4 +1,5 @@
 import sys
+import numpy as np
 class Methods():
 
 	def calculate_lower_size(self, contacts):
@@ -45,3 +46,17 @@ class Methods():
 			name = name.split(sep, 1)[0]
 			first_names.append(name)
 		return first_names
+
+	def calculate_quartiles(self, contacts):
+		size_var = []
+		for people in contacts:
+			size_var.append(len(people.replace(" ","")))
+		var = np.array(size_var)
+		var = np.sort(var)
+		q1 = np.percentile(var, 25)
+		q2 = np.percentile(var,50)
+		q3 = np.percentile(var, 75)
+		return q1, q2, q3
+
+
+

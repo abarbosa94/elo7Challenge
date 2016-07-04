@@ -7,11 +7,13 @@
                         <tr>
                                 <th>Nome</th>
                                 <th>Email</th>
+                                <th>Ultimo Tweet</th>
                         </tr>
                 {% for contact in object_list %}
                         <tr>
                                 <td>{{ contact.name }}</td>
                                 <td>{{ contact.email }}</td>
+                                <td>{{ contact.last_tweet }}</td>
                                 <td><form action="{% url 'update' contact.id %}">
                                         <input type="submit" value="Editar">
                                         </form><td>

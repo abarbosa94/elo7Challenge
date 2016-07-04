@@ -1,5 +1,6 @@
 import tweepy
 from tweepy import OAuthHandler
+from agenda.models import Contact
  
 consumer_key = 'A74fus0vAo1j6unNN6hWbnPVU'
 consumer_secret = 'b00EM2FxYk7Kym80daQ9l54I1myp4oys8r50Dph0Xn1TLGv4pK'
@@ -12,9 +13,13 @@ auth.set_access_token(access_token, access_secret)
 api = tweepy.API(auth)
 
 
-class Test():
+class Twitter():
     def get_last_tweet(self, screen_names, contacts):
-        for i in range(0,len(contacts)):
+        i = 0
+        for i in range(0,len(screen_names)):
             tweet_unique = api.user_timeline(screen_name = screen_names[i], count = 1)[0]
-            contacts[i].last_tweet = tweet_unique.text
+            contact = Contact.objects.filter(id=contacts[i].id)[0]
+            contact.last_tweet = tweet_unique.text
+            print contact.last_tweet
+            contact.save()
         return contacts

@@ -5,7 +5,7 @@ from agenda.models import Contact
 from agenda.forms import ContactForm
 from agenda.functions.methods import Methods
 from django.db.models import Q
-from agenda.functions.twitter import Test
+from agenda.functions.twitter import Twitter
 
 # Create your views here.
 
@@ -58,12 +58,14 @@ class List(ListView):
     template_name = 'list.html'
     model = Contact
     context_object = 'name'
-    #context = super(List, self).get_context_data(**kwargs) 
-    test = Test()
-    contacts = Contact.objects.all()
-    users = contacts.values_list('twitter_user', flat=True)
-    #contacts = test.get_last_tweet(users, contacts)
+    def get_context_data(self, **kwargs):
+        context = super(List, self).get_context_data(**kwargs) 
+        tweet = Twitter()
+        contacts = Contact.objects.all()
+        users = contacts.values_list('twitter_user', flat=True)
+        contacts = tweet.get_last_tweet(users, contacts)
         #context['tweet'] = tweet
+        return context
 
 class SearchList(ListView):
     template_name = 'results.html'

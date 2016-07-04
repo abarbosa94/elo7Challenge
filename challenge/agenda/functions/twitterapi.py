@@ -14,12 +14,21 @@ api = tweepy.API(auth)
 
 
 class Twitter():
+
     def get_last_tweet(self, screen_names, contacts):
         i = 0
         for i in range(0,len(screen_names)):
-            tweet_unique = api.user_timeline(screen_name = screen_names[i], count = 1)[0]
+            user_status =  api.user_timeline(screen_name = screen_names[i], count = 1)
             contact = Contact.objects.filter(id=contacts[i].id)[0]
-            contact.last_tweet = tweet_unique.text
-            print contact.last_tweet
-            contact.save()
+            if len(user_status) != 0 :
+                tweet_unique = user_status[0]
+                if len(screen_names[i]) != 0:
+                    contact.last_tweet = tweet_unique.text
+                    contact.save()
+                else:
+                    contact.last_tweet = contact.name+' nao informou uma conta do twitter ):'
+                    contact.save()
+            else:
+                contact.last_tweet = contact.name+' ainda nao publicou nenhum tweet !'
+                contact.save()
         return contacts

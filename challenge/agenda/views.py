@@ -5,7 +5,7 @@ from agenda.models import Contact
 from agenda.forms import ContactForm
 from agenda.functions.methods import Methods
 from django.db.models import Q
-from agenda.functions.twitter import Twitter
+from agenda.functions.twitterapi import Twitter
 
 # Create your views here.
 
@@ -64,7 +64,6 @@ class List(ListView):
         contacts = Contact.objects.all()
         users = contacts.values_list('twitter_user', flat=True)
         contacts = tweet.get_last_tweet(users, contacts)
-        #context['tweet'] = tweet
         return context
 
 class SearchList(ListView):

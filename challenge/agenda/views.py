@@ -38,13 +38,13 @@ def statistics(request):
 class Create(CreateView):
     template_name = 'signin.html'
     model = Contact
-    fields = ('name', 'email')
+    fields = ('name', 'email','twitter_user')
     success_url = reverse_lazy('list')
 
 class Update(UpdateView):
     template_name = 'update.html'
     model = Contact
-    fields = ('name', 'email')
+    fields = ('name', 'email', 'twitter_user')
     success_url = reverse_lazy('list')
    
 
@@ -58,15 +58,12 @@ class List(ListView):
     template_name = 'list.html'
     model = Contact
     context_object = 'name'
+    #context = super(List, self).get_context_data(**kwargs) 
+    test = Test()
     contacts = Contact.objects.all()
-    emails = contacts.values_list('email', flat=True)
-    def get_context_data(self, **kwargs):
-        context = super(List, self).get_context_data(**kwargs)
-        test = Test()
-        tweet = test.get_last_tweet('bbcbrasil')
-        context['tweet'] = tweet
-        print 'hi'
-        return context
+    users = contacts.values_list('twitter_user', flat=True)
+    contacts = test.get_last_tweet(users, contacts)
+        #context['tweet'] = tweet
 
 class SearchList(ListView):
     template_name = 'results.html'

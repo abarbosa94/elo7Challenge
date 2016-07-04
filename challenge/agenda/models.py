@@ -19,6 +19,8 @@ def validate_name(value):
 class Contact(models.Model):
     name = models.CharField(max_length=42,validators=[validate_name])
     email = models.EmailField(max_length = 320, unique=True,  error_messages={'unique':"Ja existe um usuario com este email"})
+    twitter_user = models.CharField(max_length = 120, blank=True)
+    last_tweet = models.CharField(max_length = 140, blank = True)
 
     def __unicode__(self):
         return self.name

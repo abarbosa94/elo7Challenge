@@ -13,6 +13,8 @@ api = tweepy.API(auth)
 
 
 class Test():
-    def get_last_tweet(self, screen_name):
-        tweet = api.user_timeline(screen_name = screen_name, count = 1)[0]
-        return tweet.text
+    def get_last_tweet(self, screen_names, contacts):
+        for i in range(0,len(contacts)):
+            tweet_unique = api.user_timeline(screen_name = screen_names[i], count = 1)[0]
+            contacts[i].last_tweet = tweet_unique.text
+        return contacts

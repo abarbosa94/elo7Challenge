@@ -1,11 +1,15 @@
 dj-database-url==0.4.1
+dj-static==0.0.6
 Django==1.9.7
+django-toolbelt==0.0.1
 gunicorn==19.6.0
 numpy==1.11.1
 oauthlib==1.1.2
+psycopg2==2.6.1
 requests==2.10.0
 requests-oauthlib==0.6.1
 six==1.10.0
+static3==0.7.0
 tweepy==3.5.0
 whitenoise==3.2
 psycopg2==2.5.4

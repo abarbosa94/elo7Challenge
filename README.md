@@ -12,5 +12,6 @@ Resolvi focar apenas na parte que a especificação exigia. Dado que o exercíci
 Caso deseje rodar a aplicação localmente, siga os seguintes passos:
 * clone o repositório
 * entre na pasta `challenge`
+* altere o arquivo `settings.py` de forma que ele conecte-se a um banco local (como o sqlite3)
 * execute `pip install -r requirements.txt`, perferencialmente dentro de um `virtualenv`
 * execute `python manage.py runserver`

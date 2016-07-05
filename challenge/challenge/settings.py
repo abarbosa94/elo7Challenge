@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for challenge project.
 
@@ -25,7 +26,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['andre-elo7challenge.herokuapp.com']
 
 
 # Application definition

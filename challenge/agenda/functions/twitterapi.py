@@ -15,14 +15,25 @@ api = tweepy.API(auth)
 
 class Twitter():
 
+    def get_user_status(self, screen_names, contact):
+        user_status = ''
+        for screen_name in screen_names:
+            if screen_name == contact.twitter_user:
+                user_status =  api.user_timeline(screen_name = screen_name, count = 1)
+                break;
+            else:
+                pass
+        return user_status
+
     def get_last_tweet(self, screen_names, contacts):
         i = 0
-        for i in range(0,len(screen_names)):
-            user_status =  api.user_timeline(screen_name = screen_names[i], count = 1)
-            contact = Contact.objects.filter(id=contacts[i].id)[0]
+        for contact in contacts:
+            user_status = self.get_user_status(screen_names,contact)
+            print len(user_status)
+            contact = Contact.objects.filter(id=contact.id)[0]
             if len(user_status) != 0 :
                 tweet_unique = user_status[0]
-                if len(screen_names[i]) != 0:
+                if len(contact.twitter_user) != 0:
                     contact.last_tweet = tweet_unique.text
                     contact.save()
                 else:

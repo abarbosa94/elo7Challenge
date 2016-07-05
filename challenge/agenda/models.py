@@ -33,7 +33,7 @@ def validate_screen_name(value):
             api.get_user(value)
         except tweepy.TweepError:
             raise ValidationError(
-                _('Por favor, informe um usuario que exista e que nao seja privado')
+                _('Por favor, informe um usuario que exista')
             )
 
 # Create your models here.
